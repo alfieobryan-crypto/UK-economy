@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deficit Reduction Simulator – UK Economy Dashboard</title>
+  <meta name="description" content="Interactive simulator: toggle policy options and see their combined impact on the UK deficit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">UK Economy</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Overview</a></li>
+      <li><a href="/spending">Spending</a></li>
+      <li><a href="/housing">Housing</a></li>
+      <li><a href="/inflation">Inflation</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+      <li><a href="/deficit">Deficit</a></li>
+      <li><a href="/solutions" aria-current="page">Solutions</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <div class="page-header">
+      <h1>Deficit Reduction Simulator</h1>
+      <p>Toggle policy options below to see how different combinations could close the £124bn annual deficit. Estimates are approximate — real-world effects interact and compound.</p>
+    </div>
+
+    <div class="sim-disclaimer">
+      <strong>Note:</strong> Figures are independent estimates for each measure. Combining policies creates
+      interactions — e.g. higher VAT reduces incomes and therefore income tax yield. Treat totals as directional,
+      not precise. Difficulty ratings reflect political and administrative complexity, not economic merit.
+    </div>
+
+    <div class="simulator-layout">
+
+      <!-- ── Left: Policy list ── -->
+      <div class="simulator-policies">
+
+        <div class="policy-category-section">
+          <div class="category-header category-revenue">
+            <span class="category-icon">&#8593;</span> Raise Revenue
+            <button class="cat-toggle-btn" data-cat="revenue">Select all</button>
+          </div>
+          <div id="policies-revenue"></div>
+        </div>
+
+        <div class="policy-category-section">
+          <div class="category-header category-spending">
+            <span class="category-icon">&#8595;</span> Reduce Spending
+            <button class="cat-toggle-btn" data-cat="spending">Select all</button>
+          </div>
+          <div id="policies-spending"></div>
+        </div>
+
+        <div class="policy-category-section">
+          <div class="category-header category-growth">
+            <span class="category-icon">&#10548;</span> Boost Growth
+            <button class="cat-toggle-btn" data-cat="growth">Select all</button>
+          </div>
+          <p class="category-note">These generate extra tax revenue indirectly through higher GDP — longer time horizon, higher uncertainty.</p>
+          <div id="policies-growth"></div>
+        </div>
+
+      </div>
+
+      <!-- ── Right: Sticky summary panel ── -->
+      <div class="simulator-panel">
+        <div class="deficit-panel">
+          <div class="deficit-panel-title">Annual Deficit</div>
+          <div class="deficit-panel-baseline">Baseline: <strong>£124bn</strong></div>
+
+          <div class="deficit-progress-bar">
+            <div class="deficit-progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+
+          <div class="deficit-remaining-label" id="remaining-label">£124bn remaining</div>
+
+          <div class="panel-breakdown">
+            <div class="panel-row">
+              <span class="label">Revenue measures</span>
+              <span class="value revenue-color" id="total-revenue">£0bn</span>
+            </div>
+            <div class="panel-row">
+              <span class="label">Spending cuts</span>
+              <span class="value spending-color" id="total-spending">£0bn</span>
+            </div>
+            <div class="panel-row">
+              <span class="label">Growth gains</span>
+              <span class="value growth-color" id="total-growth">£0bn</span>
+            </div>
+            <div class="panel-row" style="border-top:1px solid var(--border);padding-top:0.5rem;margin-top:0.25rem">
+              <span class="label" style="font-weight:600">Total saving</span>
+              <span class="value" id="total-all" style="font-weight:700;font-size:1.05rem">£0bn</span>
+            </div>
+          </div>
+
+          <div class="panel-status" id="panel-status"></div>
+
+          <button class="reset-btn" id="reset-btn">Reset all</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-panel" style="margin-top:1.5rem">
+      <strong>Sources:</strong> Impact estimates drawn from OBR, IFS, Resolution Foundation, LSE, HM Treasury Green Book analysis,
+      and published academic literature. Difficulty ratings are the author's assessment of political/administrative feasibility.
+      See <a href="/deficit" style="color:var(--accent)">Deficit page</a> for revenue and spending baseline figures.
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Estimates based on OBR, IFS &amp; HM Treasury analysis &middot; For illustrative purposes</p>
+</footer>
+
+<script type="module" src="js/solutions.js"></script>
+</body>
+</html>
