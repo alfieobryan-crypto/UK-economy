@@ -89,11 +89,63 @@
       between the reference period and publication. Data covers the calendar year (Jan–Dec).
     </div>
 
+    <hr class="section-divider">
+
+    <p class="section-title">Irregular Migration</p>
+    <p class="section-subtitle">Small boat Channel crossings and asylum system data. Source: Home Office.</p>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Channel Crossings 2024</div>
+        <div class="stat-value negative">36,816</div>
+        <div class="stat-sub">People arriving by small boat</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Asylum Applications 2024</div>
+        <div class="stat-value negative">108,138</div>
+        <div class="stat-sub">Main applicants only</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Asylum Grant Rate</div>
+        <div class="stat-value neutral">73%</div>
+        <div class="stat-sub">Of initial decisions in 2023</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Asylum Backlog</div>
+        <div class="stat-value negative">~85,000</div>
+        <div class="stat-sub">Awaiting initial decision (est. end 2024)</div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Small Boat Channel Crossings by Year</h2>
+      <div class="chart-wrapper" id="boats-wrapper">
+        <canvas id="boats-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Asylum Applications &amp; Decisions</h2>
+      <div class="chart-wrapper" id="asylum-wrapper">
+        <canvas id="asylum-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <strong>About this data:</strong> &ldquo;Irregular migration&rdquo; refers to people entering the UK outside
+      official routes. The Home Office publishes small boat crossing figures and asylum statistics separately from ONS
+      migration estimates. <strong>Channel crossing figures</strong> only capture one route — most irregular entrants
+      arrive by other means (lorries, ferries, visa overstays). <strong>Asylum grant rates</strong> reflect initial
+      Home Office decisions and exclude appeals, which overturn a significant proportion of refusals.
+      Asylum backlog figures are estimates based on published quarterly data.
+    </div>
+
   </div>
 </main>
 
 <footer>
-  <p>Data sourced from <a href="https://www.ons.gov.uk" target="_blank" rel="noopener">ONS</a> Migration Statistics &middot; Annual estimates</p>
+  <p>Data sourced from <a href="https://www.ons.gov.uk" target="_blank" rel="noopener">ONS</a> Migration Statistics &middot;
+     <a href="https://www.gov.uk/government/organisations/home-office" target="_blank" rel="noopener">Home Office</a> Asylum data</p>
 </footer>
 
 <script type="module" src="js/immigration.js"></script>

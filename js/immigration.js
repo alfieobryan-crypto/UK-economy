@@ -1,5 +1,19 @@
 import { getNetMigration, mergeChartConfig } from './api.js';
 
+/* ─── Irregular migration data (Home Office) ─────────────────────────────── */
+const SMALL_BOATS = {
+  labels: ['2018','2019','2020','2021','2022','2023','2024'],
+  values: [299, 1843, 8410, 28526, 45755, 29437, 36816]
+};
+
+const ASYLUM = {
+  labels: ['2019','2020','2021','2022','2023','2024'],
+  applications: [35099, 29456, 48540, 74751, 84425, 108138],
+  granted:      [16800, 18600, 20000, 14961, 52534, 55000],
+  refused:      [10200,  4900,  8500,  9826, 18492, 20000],
+  other:        [ 8099,  5956, 20040, 49964, 13399, 33138]
+};
+
 /* ─── Nav toggle ─────────────────────────────────────────────────────────── */
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks  = document.getElementById('nav-links');
@@ -170,4 +184,94 @@ async function init() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', init);
+function renderIrregular() {
+  /* Small boats bar chart */
+  const boatsCanvas = document.getElementById('boats-chart');
+  if (boatsCanvas) {
+    const cfg = mergeChartConfig({
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: { label: ctx => ` ${ctx.parsed.y.toLocaleString('en-GB')} crossings` }
+        }
+      },
+      scales: {
+        y: { ticks: { callback: v => v >= 1000 ? `${(v / 1000).toFixed(0)}k` : v } }
+      }
+    });
+
+    const barColors = SMALL_BOATS.values.map(v =>
+      v > 40000 ? 'rgba(248,113,113,0.75)' :
+      v > 20000 ? 'rgba(251,191,36,0.75)' :
+                  'rgba(56,189,248,0.75)'
+    );
+    const barBorder = SMALL_BOATS.values.map(v =>
+      v > 40000 ? '#f87171' : v > 20000 ? '#fbbf24' : '#38bdf8'
+    );
+
+    new Chart(boatsCanvas, {
+      type: 'bar',
+      data: {
+        labels: SMALL_BOATS.labels,
+        datasets: [{
+          label: 'Small boat crossings',
+          data:            SMALL_BOATS.values,
+          backgroundColor: barColors,
+          borderColor:     barBorder,
+          borderWidth:     1,
+          borderRadius:    4
+        }]
+      },
+      options: cfg
+    });
+  }
+
+  /* Asylum stacked bar chart */
+  const asylumCanvas = document.getElementById('asylum-chart');
+  if (asylumCanvas) {
+    const cfg2 = mergeChartConfig({
+      scales: {
+        x: { stacked: true },
+        y: { stacked: true, ticks: { callback: v => v >= 1000 ? `${(v / 1000).toFixed(0)}k` : v } }
+      }
+    });
+
+    new Chart(asylumCanvas, {
+      type: 'bar',
+      data: {
+        labels: ASYLUM.labels,
+        datasets: [
+          {
+            label:           'Granted',
+            data:            ASYLUM.granted,
+            backgroundColor: 'rgba(74,222,128,0.75)',
+            borderColor:     '#4ade80',
+            borderWidth:     1,
+            borderRadius:    { topLeft: 0, topRight: 0, bottomLeft: 3, bottomRight: 3 }
+          },
+          {
+            label:           'Refused',
+            data:            ASYLUM.refused,
+            backgroundColor: 'rgba(248,113,113,0.75)',
+            borderColor:     '#f87171',
+            borderWidth:     1
+          },
+          {
+            label:           'Pending / Other',
+            data:            ASYLUM.other,
+            backgroundColor: 'rgba(100,116,139,0.6)',
+            borderColor:     '#64748b',
+            borderWidth:     1,
+            borderRadius:    { topLeft: 3, topRight: 3, bottomLeft: 0, bottomRight: 0 }
+          }
+        ]
+      },
+      options: cfg2
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  init();
+  renderIrregular();
+});

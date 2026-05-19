@@ -45,14 +45,14 @@
         <div class="stat-sub">Public spending as share of GDP</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Largest Department</div>
-        <div class="stat-value" style="font-size:1.2rem;color:var(--accent)">Social Protection</div>
-        <div class="stat-sub">£276.7bn &middot; 28.3% of total</div>
+        <div class="stat-label">State Pension alone</div>
+        <div class="stat-value negative">£130bn</div>
+        <div class="stat-sub">13.3% of total &middot; largest single item</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Debt Interest</div>
         <div class="stat-value negative">£100.3bn</div>
-        <div class="stat-sub">10.3% of total spending</div>
+        <div class="stat-sub">More than Education or Defence</div>
       </div>
     </div>
 
@@ -72,7 +72,7 @@
     </div>
 
     <div class="chart-section">
-      <h2>Breakdown Table</h2>
+      <h2>Department Summary</h2>
       <div class="card">
         <table class="spending-table" aria-label="Government spending by department">
           <thead>
@@ -82,15 +82,33 @@
               <th>% of Total</th>
             </tr>
           </thead>
-          <tbody id="spending-tbody"></tbody>
+          <tbody id="overview-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Detailed Sub-category Breakdown</h2>
+      <div class="card">
+        <table class="spending-table" aria-label="Detailed government spending breakdown">
+          <thead>
+            <tr>
+              <th>Category / Sub-item</th>
+              <th>Spending (£bn)</th>
+              <th>% of Total</th>
+            </tr>
+          </thead>
+          <tbody id="detail-tbody"></tbody>
         </table>
       </div>
     </div>
 
     <div class="info-panel">
-      <strong>Notes:</strong> Figures are estimates for financial year 2024/25 based on HM Treasury Autumn Budget 2024 data.
-      Social protection includes pensions, housing benefit, and tax credits. Debt interest reflects the cost of servicing
-      government borrowing. Figures may not sum exactly due to rounding.
+      <strong>Notes:</strong> Figures are estimates for 2024/25 based on HM Treasury Autumn Budget 2024 and PESA data.
+      The State Pension (£130bn) is the single largest line item in the entire budget.
+      Debt interest (£100.3bn) now exceeds spending on education or defence.
+      Local Government (£82bn) covers grants to councils for services including social care.
+      Figures may not sum exactly due to rounding.
     </div>
 
   </div>
