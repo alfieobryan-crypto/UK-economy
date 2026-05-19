@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deficit &amp; Revenue – UK Economy Dashboard</title>
+  <meta name="description" content="UK government revenue breakdown and deficit — spending vs. income since 2015.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">UK Economy</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Overview</a></li>
+      <li><a href="/spending">Spending</a></li>
+      <li><a href="/housing">Housing</a></li>
+      <li><a href="/inflation">Inflation</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+      <li><a href="/deficit" aria-current="page">Deficit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <div class="page-header">
+      <h1>Deficit &amp; Government Revenue</h1>
+      <p>What the UK government takes in vs. what it spends — 2024/25. Source: HM Treasury &amp; OBR.</p>
+    </div>
+
+    <!-- ── Headline stat cards ── -->
+    <div class="stats-row" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+      <div class="stat-card">
+        <div class="stat-label">Total Revenue</div>
+        <div class="stat-value positive">£1,113bn</div>
+        <div class="stat-sub">2024/25 current receipts</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Spending</div>
+        <div class="stat-value negative">£1,237bn</div>
+        <div class="stat-sub">2024/25 total managed expenditure</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Deficit (PSNB)</div>
+        <div class="stat-value negative">£124bn</div>
+        <div class="stat-sub">Public sector net borrowing</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Deficit as % GDP</div>
+        <div class="stat-value negative">4.5%</div>
+        <div class="stat-sub">OBR forecast 2024/25</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">National Debt</div>
+        <div class="stat-value negative">~£2.8tn</div>
+        <div class="stat-sub">~97% of GDP (end 2024/25)</div>
+      </div>
+    </div>
+
+    <!-- ── Revenue breakdown charts ── -->
+    <div class="charts-grid">
+      <div class="chart-section">
+        <h2>Revenue by Source</h2>
+        <div class="chart-wrapper" style="height:440px">
+          <canvas id="revenue-doughnut"></canvas>
+        </div>
+      </div>
+      <div class="chart-section">
+        <h2>Revenue Sources (£bn)</h2>
+        <div class="chart-wrapper" style="height:440px">
+          <canvas id="revenue-bar"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Receipts vs expenditure ── -->
+    <div class="chart-section">
+      <h2>Receipts vs. Spending — 10-Year View</h2>
+      <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1rem">
+        The shaded gap between the two lines is the annual deficit. The COVID year (2020/21) stands out clearly.
+      </p>
+      <div class="chart-wrapper" style="height:460px">
+        <canvas id="gap-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- ── Annual deficit bar ── -->
+    <div class="chart-section">
+      <h2>Annual Deficit (Public Sector Net Borrowing, £bn)</h2>
+      <div class="chart-wrapper">
+        <canvas id="deficit-bar"></canvas>
+      </div>
+    </div>
+
+    <!-- ── Revenue table ── -->
+    <div class="chart-section">
+      <h2>Revenue Breakdown Table</h2>
+      <div class="card">
+        <table class="spending-table" aria-label="Government revenue by source">
+          <thead>
+            <tr>
+              <th>Revenue Source</th>
+              <th>2024/25 (£bn)</th>
+              <th>% of Total</th>
+            </tr>
+          </thead>
+          <tbody id="revenue-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <strong>About this data:</strong> Revenue figures are HM Treasury / OBR forecasts from the Autumn Budget 2024.
+      Total Managed Expenditure (£1,237bn) is higher than the departmental spending shown on the
+      <a href="/spending" style="color:var(--accent)">Spending page</a> (£977bn) because it includes
+      all local government spending, capital investment, and some items not allocated to specific departments.
+      <strong>PSNB</strong> (Public Sector Net Borrowing) is the standard measure of the annual deficit —
+      it excludes financial transactions such as bank bailouts.
+      National debt figures are for public sector net debt excluding Bank of England.
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Data sourced from <a href="https://www.gov.uk/government/organisations/hm-treasury" target="_blank" rel="noopener">HM Treasury</a> &middot;
+     <a href="https://obr.uk" target="_blank" rel="noopener">OBR Autumn Budget 2024</a></p>
+</footer>
+
+<script type="module" src="js/deficit.js"></script>
+</body>
+</html>

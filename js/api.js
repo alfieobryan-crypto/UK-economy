@@ -227,6 +227,29 @@ export function getSpending() {
   return FALLBACK_SPENDING;
 }
 
+/* ─── Revenue & Deficit Data ─────────────────────────────────────────────── */
+
+export const REVENUE_2425 = [
+  { label: 'Income Tax',            value: 285.0, color: '#38bdf8' },
+  { label: 'VAT',                   value: 191.0, color: '#818cf8' },
+  { label: 'National Insurance',    value: 177.0, color: '#34d399' },
+  { label: 'Corporation Tax',       value: 101.0, color: '#fbbf24' },
+  { label: 'Council Tax & B.Rates', value:  76.0, color: '#fb923c' },
+  { label: 'Excise & Fuel Duties',  value:  42.0, color: '#a78bfa' },
+  { label: 'CGT & Inheritance Tax', value:  30.0, color: '#f87171' },
+  { label: 'Other Taxes',           value:  49.0, color: '#22d3ee' },
+  { label: 'Non-tax Receipts',      value: 162.0, color: '#64748b' }
+];
+// Total: £1,113bn
+
+export const DEFICIT_HISTORY = {
+  labels:      ['2015/16','2016/17','2017/18','2018/19','2019/20',
+                '2020/21','2021/22','2022/23','2023/24','2024/25'],
+  receipts:    [676, 697, 740, 783, 813,  905, 1019, 1071, 1096, 1113],
+  expenditure: [744, 749, 781, 825, 871, 1227, 1158, 1199, 1218, 1237],
+  deficit:     [ 68,  52,  41,  42,  58,  322,  139,  128,  122,  124]
+};
+
 /* ─── Chart Defaults ─────────────────────────────────────────────────────── */
 export const CHART_DEFAULTS = {
   responsive: true,
