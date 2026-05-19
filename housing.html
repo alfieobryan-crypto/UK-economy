@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Housing – UK Economy Dashboard</title>
+  <meta name="description" content="UK average house prices, trends, and year-on-year changes from ONS data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">UK Economy</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Overview</a></li>
+      <li><a href="/spending">Spending</a></li>
+      <li><a href="/housing" aria-current="page">Housing</a></li>
+      <li><a href="/inflation">Inflation</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>UK Housing Market</h1>
+      <p>Average house prices across the UK — monthly data from the ONS House Price Statistics for Small Areas.</p>
+    </div>
+
+    <div id="error-banner" class="error-banner">
+      Live data unavailable. Showing estimated values.
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Current Avg Price</div>
+        <div class="stat-value neutral" id="stat-price"><span class="card-spinner"></span></div>
+        <div class="stat-sub" id="stat-price-date"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Year-on-Year Change</div>
+        <div class="stat-value" id="stat-yoy"><span class="card-spinner"></span></div>
+        <div class="stat-sub">vs. same month prior year</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">3-Year Peak</div>
+        <div class="stat-value neutral" id="stat-peak"><span class="card-spinner"></span></div>
+        <div class="stat-sub" id="stat-peak-date"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">3-Year Low</div>
+        <div class="stat-value neutral" id="stat-low"><span class="card-spinner"></span></div>
+        <div class="stat-sub" id="stat-low-date"></div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>House Price Trend (36 months)</h2>
+      <div class="chart-wrapper loading" id="price-wrapper" style="height:440px">
+        <div class="spinner-overlay">
+          <span class="loading-spinner"></span>
+          <span>Loading data&hellip;</span>
+        </div>
+        <canvas id="price-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Year-on-Year % Change</h2>
+      <div class="chart-wrapper loading" id="yoy-wrapper">
+        <div class="spinner-overlay">
+          <span class="loading-spinner"></span>
+          <span>Loading data&hellip;</span>
+        </div>
+        <canvas id="yoy-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <strong>About this data:</strong> UK average house price data comes from the ONS House Price Statistics for Small
+      Areas (HPSSA) dataset, which uses Land Registry completions data. Figures represent the mean transaction price.
+      Data is typically released with a 2–3 month lag.
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Data sourced from <a href="https://www.ons.gov.uk" target="_blank" rel="noopener">ONS</a> HPSSA dataset &middot; Land Registry</p>
+</footer>
+
+<script type="module" src="js/housing.js"></script>
+</body>
+</html>

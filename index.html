@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Economy Dashboard</title>
+  <meta name="description" content="Live UK economic indicators — GDP, inflation, unemployment, interest rates, housing, and immigration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">UK Economy</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/" aria-current="page">Overview</a></li>
+      <li><a href="/spending">Spending</a></li>
+      <li><a href="/housing">Housing</a></li>
+      <li><a href="/inflation">Inflation</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>UK Economy Overview</h1>
+      <p>Key economic indicators sourced from the Office for National Statistics and Bank of England.</p>
+    </div>
+
+    <div id="error-banner" class="error-banner">
+      Some live data could not be loaded. Showing estimated values where indicated.
+    </div>
+
+    <section class="indicators-grid" aria-label="Key economic indicators">
+
+      <div class="indicator-card" id="card-gdp">
+        <div class="card-label">GDP Growth</div>
+        <div class="card-value" id="val-gdp"><span class="card-spinner"></span></div>
+        <div class="card-meta" id="meta-gdp"></div>
+        <div class="card-source">Source: ONS QNA</div>
+      </div>
+
+      <div class="indicator-card" id="card-cpi">
+        <div class="card-label">CPI Inflation</div>
+        <div class="card-value" id="val-cpi"><span class="card-spinner"></span></div>
+        <div class="card-meta" id="meta-cpi"></div>
+        <div class="card-source">Source: ONS CPIH01</div>
+      </div>
+
+      <div class="indicator-card" id="card-unemployment">
+        <div class="card-label">Unemployment Rate</div>
+        <div class="card-value" id="val-unemployment"><span class="card-spinner"></span></div>
+        <div class="card-meta" id="meta-unemployment"></div>
+        <div class="card-source">Source: ONS LMS</div>
+      </div>
+
+      <div class="indicator-card" id="card-rate">
+        <div class="card-label">Bank Rate</div>
+        <div class="card-value" id="val-rate"><span class="card-spinner"></span></div>
+        <div class="card-meta" id="meta-rate"></div>
+        <div class="card-source">Source: Bank of England</div>
+      </div>
+
+      <div class="indicator-card" id="card-house">
+        <div class="card-label">Avg House Price</div>
+        <div class="card-value" id="val-house"><span class="card-spinner"></span></div>
+        <div class="card-meta" id="meta-house"></div>
+        <div class="card-source">Source: ONS HPSSA</div>
+      </div>
+
+      <div class="indicator-card" id="card-migration">
+        <div class="card-label">Net Migration</div>
+        <div class="card-value" id="val-migration"><span class="card-spinner"></span></div>
+        <div class="card-meta" id="meta-migration"></div>
+        <div class="card-source">Source: ONS Migration</div>
+      </div>
+
+    </section>
+
+    <div class="charts-grid">
+      <div class="chart-section">
+        <h2>Inflation Trend</h2>
+        <div class="chart-wrapper loading" id="cpi-wrapper">
+          <div class="spinner-overlay">
+            <span class="loading-spinner"></span>
+            <span>Loading data&hellip;</span>
+          </div>
+          <canvas id="cpi-chart"></canvas>
+        </div>
+      </div>
+      <div class="chart-section">
+        <h2>Bank Rate History</h2>
+        <div class="chart-wrapper loading" id="rate-wrapper">
+          <div class="spinner-overlay">
+            <span class="loading-spinner"></span>
+            <span>Loading data&hellip;</span>
+          </div>
+          <canvas id="rate-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Data sourced from <a href="https://www.ons.gov.uk" target="_blank" rel="noopener">ONS</a> and <a href="https://www.bankofengland.co.uk" target="_blank" rel="noopener">Bank of England</a> &middot; Updated automatically</p>
+</footer>
+
+<script type="module" src="js/home.js"></script>
+</body>
+</html>

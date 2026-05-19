@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immigration – UK Economy Dashboard</title>
+  <meta name="description" content="UK net migration figures and immigration trends from ONS data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">UK Economy</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Overview</a></li>
+      <li><a href="/spending">Spending</a></li>
+      <li><a href="/housing">Housing</a></li>
+      <li><a href="/inflation">Inflation</a></li>
+      <li><a href="/immigration" aria-current="page">Immigration</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>UK Immigration &amp; Migration</h1>
+      <p>Net migration statistics — annual data from the Office for National Statistics.</p>
+    </div>
+
+    <div id="error-banner" class="error-banner">
+      Live data unavailable. Showing estimated values.
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Latest Net Migration</div>
+        <div class="stat-value neutral" id="stat-net"><span class="card-spinner"></span></div>
+        <div class="stat-sub" id="stat-net-date"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Peak (in dataset)</div>
+        <div class="stat-value negative" id="stat-peak"><span class="card-spinner"></span></div>
+        <div class="stat-sub" id="stat-peak-date"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Year-on-Year Change</div>
+        <div class="stat-value" id="stat-yoy"><span class="card-spinner"></span></div>
+        <div class="stat-sub">vs. prior year</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">5-Year Average</div>
+        <div class="stat-value neutral" id="stat-avg"><span class="card-spinner"></span></div>
+        <div class="stat-sub">Most recent 5 years</div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Net Migration by Year</h2>
+      <div class="chart-wrapper loading" id="mig-wrapper" style="height:460px">
+        <div class="spinner-overlay">
+          <span class="loading-spinner"></span>
+          <span>Loading data&hellip;</span>
+        </div>
+        <canvas id="mig-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>3-Year Rolling Average</h2>
+      <div class="chart-wrapper loading" id="avg-wrapper">
+        <div class="spinner-overlay">
+          <span class="loading-spinner"></span>
+          <span>Loading data&hellip;</span>
+        </div>
+        <canvas id="avg-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <strong>Notes on data:</strong> Net migration is immigration minus emigration. Figures are ONS estimates
+      based on the International Passenger Survey and administrative data. The most recent year's data is
+      <strong>provisional</strong> and subject to revision. There is typically a <strong>12–18 month lag</strong>
+      between the reference period and publication. Data covers the calendar year (Jan–Dec).
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Data sourced from <a href="https://www.ons.gov.uk" target="_blank" rel="noopener">ONS</a> Migration Statistics &middot; Annual estimates</p>
+</footer>
+
+<script type="module" src="js/immigration.js"></script>
+</body>
+</html>
