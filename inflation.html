@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inflation – UK Economy Dashboard</title>
+  <meta name="description" content="UK CPI and CPIH inflation data, historical trends and monthly changes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">UK Economy</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Overview</a></li>
+      <li><a href="/spending">Spending</a></li>
+      <li><a href="/housing">Housing</a></li>
+      <li><a href="/inflation" aria-current="page">Inflation</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>UK Inflation</h1>
+      <p>Consumer Prices Index (CPIH) — monthly data from the Office for National Statistics.</p>
+    </div>
+
+    <div id="error-banner" class="error-banner">
+      Live data unavailable. Showing estimated values.
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Current CPI Rate</div>
+        <div class="stat-value" id="stat-current"><span class="card-spinner"></span></div>
+        <div class="stat-sub" id="stat-current-date"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">vs. Prior Month</div>
+        <div class="stat-value" id="stat-mom"><span class="card-spinner"></span></div>
+        <div class="stat-sub">Month-on-month change</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">BoE Target</div>
+        <div class="stat-value" style="color:var(--accent)">2.0%</div>
+        <div class="stat-sub">Symmetric inflation target</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Distance from Target</div>
+        <div class="stat-value" id="stat-target"><span class="card-spinner"></span></div>
+        <div class="stat-sub">Percentage points above/below 2%</div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>CPI Inflation History</h2>
+      <div class="chart-wrapper loading" id="cpi-history-wrapper" style="height:440px">
+        <div class="spinner-overlay">
+          <span class="loading-spinner"></span>
+          <span>Loading data&hellip;</span>
+        </div>
+        <canvas id="cpi-history-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Month-on-Month Change</h2>
+      <div class="chart-wrapper loading" id="mom-wrapper">
+        <div class="spinner-overlay">
+          <span class="loading-spinner"></span>
+          <span>Loading data&hellip;</span>
+        </div>
+        <canvas id="mom-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <strong>About this data:</strong> CPIH (Consumer Prices Index including owner occupiers' housing costs) is the
+      ONS's preferred measure of inflation. The Bank of England targets CPI inflation at <strong>2%</strong> over the
+      medium term. Data is typically released around 3 weeks after the reference month.
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Data sourced from <a href="https://www.ons.gov.uk" target="_blank" rel="noopener">ONS</a> CPIH01 dataset</p>
+</footer>
+
+<script type="module" src="js/inflation.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Spending – UK Economy Dashboard</title>
+  <meta name="description" content="UK government spending breakdown by department for 2024/25.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">UK Economy</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Overview</a></li>
+      <li><a href="/spending" aria-current="page">Spending</a></li>
+      <li><a href="/housing">Housing</a></li>
+      <li><a href="/inflation">Inflation</a></li>
+      <li><a href="/immigration">Immigration</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <h1>Government Spending</h1>
+      <p>UK public expenditure breakdown for financial year 2024/25. Source: HM Treasury.</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Total Spending</div>
+        <div class="stat-value neutral">£977bn</div>
+        <div class="stat-sub">2024/25 estimate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">% of GDP</div>
+        <div class="stat-value neutral">44.5%</div>
+        <div class="stat-sub">Public spending as share of GDP</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Largest Department</div>
+        <div class="stat-value" style="font-size:1.2rem;color:var(--accent)">Social Protection</div>
+        <div class="stat-sub">£276.7bn &middot; 28.3% of total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Debt Interest</div>
+        <div class="stat-value negative">£100.3bn</div>
+        <div class="stat-sub">10.3% of total spending</div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-section">
+        <h2>Spending by Department</h2>
+        <div class="chart-wrapper" id="pie-wrapper" style="height:420px">
+          <canvas id="pie-chart"></canvas>
+        </div>
+      </div>
+      <div class="chart-section">
+        <h2>Departmental Spend (£bn)</h2>
+        <div class="chart-wrapper" id="bar-wrapper" style="height:420px">
+          <canvas id="bar-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Breakdown Table</h2>
+      <div class="card">
+        <table class="spending-table" aria-label="Government spending by department">
+          <thead>
+            <tr>
+              <th>Department</th>
+              <th>Spending (£bn)</th>
+              <th>% of Total</th>
+            </tr>
+          </thead>
+          <tbody id="spending-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <strong>Notes:</strong> Figures are estimates for financial year 2024/25 based on HM Treasury Autumn Budget 2024 data.
+      Social protection includes pensions, housing benefit, and tax credits. Debt interest reflects the cost of servicing
+      government borrowing. Figures may not sum exactly due to rounding.
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Data sourced from <a href="https://www.gov.uk/government/organisations/hm-treasury" target="_blank" rel="noopener">HM Treasury</a> &middot; 2024/25 estimates</p>
+</footer>
+
+<script type="module" src="js/spending.js"></script>
+</body>
+</html>
